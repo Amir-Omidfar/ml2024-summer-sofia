@@ -9,7 +9,7 @@ class Module6(Module5):
         self.user_input_list = None
     def get_user_k_size(self):
         self.k = int(input("Enter input k (positive integer):\n"))
-        self.user_input_list = np.array([[(0,0)]*self.N])
+        self.user_input_list = np.array([[(0.0,0.0)]*self.N])
 
     def get_user_input_list(self):
         for count in range(int(self.N)):
@@ -18,13 +18,13 @@ class Module6(Module5):
         print(f"your numbers are: {self.user_input_list}")
     
     def get_user_x_input(self):
-        x,y = input("for X input enter X and Y coordiantes:\n").split()
-        self.x = np.array([float(x),float(y)])
+        x = input("Enter your input x coordiante:\n")
+        self.x = float(x)
         if self.k > self.N:
             raise Exception("K can't be greater than N")
         
-    def find_distance_to_x(self,given_point):
-        return np.linalg.norm(np.array([self.x,given_point]))
+    def find_distance_to_x(self,point_x_val):
+        return abs(self.x - point_x_val)
     
     def find_k_points(self):
         print("Run k-nn")
@@ -32,7 +32,7 @@ class Module6(Module5):
         self.k_points = np.array([(0)*self.k])
         points = self.user_input_list[0]
         for point in points:
-            distance = self.find_distance_to_x(point)
+            distance = self.find_distance_to_x(point[0])
             self.points_list.append([distance,point])
         self.points_list.sort()
         y_sum=0
@@ -56,7 +56,7 @@ def run_program():
     mod6_program_class.get_user_input_list()
     mod6_program_class.get_user_x_input()
     res=mod6_program_class.find_k_points()
-
+    print(f"Result: {res}")
     return res
 
 if __name__ =="__main__":
