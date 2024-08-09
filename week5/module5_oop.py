@@ -1,11 +1,11 @@
 class Module5:
     def __init__(self) -> None:
-        self.user_input_size = 0
+        self.N = 0
         self.user_input_list = []
         self.x = 0
 
     def get_user_input_size(self):
-        self.user_input_size = input("Enter input N (positive integer):\n")
+        self.N = int(input("Enter input N (positive integer):\n"))
     
     def find_suffix(self, num):
         num_suffix = {
@@ -17,7 +17,7 @@ class Module5:
         return "th"
     
     def get_user_input_list(self):
-        for count in range(int(self.user_input_size)):
+        for count in range(int(self.N)):
             self.user_input_list.append(int(input(f"Enter your {str(count+1)}{self.find_suffix(str(count+1))} number:\n")))
         print(f"your numbers are: {self.user_input_list}")
     
